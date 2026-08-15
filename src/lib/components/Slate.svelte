@@ -95,7 +95,7 @@
 
 	.code {
 		font-family: var(--font-mono);
-		font-size: clamp(1.5rem, 4.5vw, 2.75rem);
+		font-size: clamp(1.125rem, 3vw, 1.75rem);
 		font-weight: 500;
 		letter-spacing: -0.02em;
 		inline-size: 100%;

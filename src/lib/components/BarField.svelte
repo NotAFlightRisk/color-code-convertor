@@ -59,7 +59,7 @@
 	.bars {
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
-		block-size: clamp(9rem, 26vh, 15rem);
+		block-size: clamp(4rem, 11vh, 6rem);
 	}
 
 	.bar {
@@ -143,8 +143,7 @@
 
 	@media (width < 40rem) {
 		.bars {
-			grid-template-columns: repeat(9, 1fr);
-			block-size: 7.5rem;
+			block-size: 4rem;
 		}
 
 		.reading {

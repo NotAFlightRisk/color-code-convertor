@@ -17,7 +17,7 @@ It's all client side, so there's no account, no network call and nothing logged.
 
 Paste into the box, or hit the picker, or press <kbd>Ctrl</kbd>+<kbd>V</kbd> anywhere on the page. It'll take a bare `ff0000` without the hash, a whole CSS declaration with the semicolon still attached, a Flutter `Color(0xFFFF0000)` literal, or just `255, 0, 0`.
 
-The bars along the top are the same color at nine lightness steps - click one to load it. The strip under them shows your color over black, grey and white, which is handy when the alpha slider is doing something.
+The band across the top is whatever you've currently got, over a checkerboard so you can see the alpha doing its thing. Under it, the same color at nine lightness steps - click one to load it - then a strip showing it over black, grey and white.
 
 Two rules that are worth knowing, beacuse there's no way to have both:
 

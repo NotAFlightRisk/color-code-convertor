@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Color } from 'culori/fn';
 	import BarField from '$lib/components/BarField.svelte';
+	import Current from '$lib/components/Current.svelte';
 	import Readout from '$lib/components/Readout.svelte';
 	import Slate from '$lib/components/Slate.svelte';
 	import {
@@ -34,6 +35,7 @@
 	const hex = $derived(toHexValue(shown));
 	const alpha = $derived(shown.alpha ?? 1);
 	const accent = $derived(accentOn(hex));
+	const name = $derived(entries.find((entry) => entry.id === 'name')!.value);
 
 	$effect(() => {
 		const root = document.documentElement.style;
@@ -106,6 +108,8 @@
 </header>
 
 <main>
+	<Current {css} {hex} {name} {alpha} />
+
 	<BarField {steps} {css} onpick={show} />
 
 	<Slate
