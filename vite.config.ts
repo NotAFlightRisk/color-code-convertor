@@ -9,7 +9,19 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter({ fallback: '404.html' })
+			adapter: adapter({ fallback: '404.html' }),
+			csp: {
+				mode: 'hash',
+				directives: {
+					'default-src': ['self'],
+					'img-src': ['self', 'data:'],
+					'style-src': ['self', 'unsafe-inline'],
+					'font-src': ['self', 'data:'],
+					'base-uri': ['none'],
+					'form-action': ['none'],
+					'frame-ancestors': ['none']
+				}
+			}
 		})
 	],
 	test: {
