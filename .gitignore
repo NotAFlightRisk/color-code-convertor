@@ -49,5 +49,7 @@ temp/
 Thumbs.db
 desktop.ini
 
-# --- Design review captures -------------------------------------------------
-/.impeccable/review/
+# --- Working notes ----------------------------------------------------------
+# Design, plan and debug scratch lives here. It stays out of the repo.
+iains-notes/
+/.impeccable/
