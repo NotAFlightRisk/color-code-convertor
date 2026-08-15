@@ -143,7 +143,7 @@
 		Nearest CSS name says so when it isn't exact.
 	</p>
 	<p class="legend">
-		<a href="https://github.com/NotAFlightRisk/html-color-code-convertor">Source on GitHub</a>
+		<a href="https://github.com/NotAFlightRisk/color-code-convertor">Source on GitHub</a>
 	</p>
 </footer>
 

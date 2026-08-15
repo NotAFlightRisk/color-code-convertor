@@ -7,8 +7,8 @@ Bug reports, typo fixes and whole features are all welcome. By joining in, you a
 
 ## Ways to contribute
 
-- 🐛 **Report a bug** - open a [bug report](https://github.com/NotAFlightRisk/html-color-code-convertor/issues/new?template=bug_report.yml)
-- 💡 **Suggest a feature** - open a [feature request](https://github.com/NotAFlightRisk/html-color-code-convertor/issues/new?template=feature_request.yml)
+- 🐛 **Report a bug** - open a [bug report](https://github.com/NotAFlightRisk/color-code-convertor/issues/new?template=bug_report.yml)
+- 💡 **Suggest a feature** - open a [feature request](https://github.com/NotAFlightRisk/color-code-convertor/issues/new?template=feature_request.yml)
 - 📖 **Improve the docs** - typos, unclear wording and missing examples are all fair game
 - 🔧 **Submit a fix** - see below
 - 🔒 **Report a vulnerability** - please _don't_ open a public issue, see [SECURITY.md](./SECURITY.md)
@@ -18,8 +18,8 @@ Bug reports, typo fixes and whole features are all welcome. By joining in, you a
 ## Getting started
 
 ```bash
-git clone git@github.com:NotAFlightRisk/html-color-code-convertor.git
-cd html-color-code-convertor
+git clone git@github.com:NotAFlightRisk/color-code-convertor.git
+cd color-code-convertor
 npm install
 npm run dev
 ```

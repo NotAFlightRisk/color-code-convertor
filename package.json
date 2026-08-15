@@ -1,5 +1,5 @@
 {
-	"name": "html-color-code-convertor",
+	"name": "color-code-convertor",
 	"version": "0.1.0",
 	"type": "module",
 	"scripts": {
@@ -35,9 +35,9 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/NotAFlightRisk/html-color-code-convertor.git"
+		"url": "git+https://github.com/NotAFlightRisk/color-code-convertor.git"
 	},
-	"homepage": "https://html-color-code-convertor.peng.li",
+	"homepage": "https://color-code-convertor.peng.li",
 	"engines": {
 		"node": ">=20"
 	}

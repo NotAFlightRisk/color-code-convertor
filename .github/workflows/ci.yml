@@ -52,12 +52,12 @@ jobs:
           context: .
           push: false
           load: true
-          tags: html-color-code-convertor:ci
+          tags: color-code-convertor:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Serve it and see if it answers
         run: |
-          docker run -d --name ci -p 8080:8080 html-color-code-convertor:ci
+          docker run -d --name ci -p 8080:8080 color-code-convertor:ci
           for i in $(seq 1 20); do
             if curl -fsS http://127.0.0.1:8080/ > /dev/null; then
               echo "up after ${i}s"

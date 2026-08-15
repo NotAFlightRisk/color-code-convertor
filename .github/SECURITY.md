@@ -17,7 +17,7 @@ Our version history is liniar, and we use semantic versioning. Only the latest r
 
 Acceptible channels:
 
-1. **GitHub** (preferred) - open an [advisory](https://github.com/NotAFlightRisk/html-color-code-convertor/security/advisories/new) from the Security tab
+1. **GitHub** (preferred) - open an [advisory](https://github.com/NotAFlightRisk/color-code-convertor/security/advisories/new) from the Security tab
 2. **Email** - [security@peng.li](mailto:security@peng.li) (PGP: [`A8431F9F332FB0CD`](https://github.com/NotAFlightRisk.gpg))
 
 Include the type of issue, the affected version and file paths, steps to reproduce, a PoC if you've got one, and what an attacker could actually achieve with it.
