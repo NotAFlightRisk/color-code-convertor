@@ -51,8 +51,8 @@
 
 	li {
 		display: grid;
-		border-block-end: 1px solid var(--rule);
-		border-inline-end: 1px solid var(--rule);
+		border-block-end: 1px solid var(--border);
+		border-inline-end: 1px solid var(--border);
 	}
 
 	.row {
@@ -64,12 +64,12 @@
 		inline-size: 100%;
 		padding: var(--s3) var(--gutter) var(--s3) var(--s5);
 		text-align: start;
-		transition: background-color 140ms var(--ease-cut);
+		transition: background-color 140ms var(--ease);
 	}
 
 	.row:hover,
 	.row:focus-visible {
-		background: var(--ink-raised);
+		background: var(--surface-hover);
 	}
 
 	.row:focus-visible {
@@ -81,10 +81,10 @@
 		inset-block: 0;
 		inset-inline-start: 0;
 		inline-size: 3px;
-		background: var(--signal);
+		background: var(--accent);
 		transform: scaleY(0);
 		transform-origin: bottom;
-		transition: transform 200ms var(--ease-cut);
+		transition: transform 200ms var(--ease);
 	}
 
 	.row.lit .edge {
@@ -100,12 +100,12 @@
 	.note {
 		font-size: 0.5625rem;
 		letter-spacing: 0.1em;
-		color: var(--bone-faint);
+		color: var(--text-subtle);
 	}
 
 	.value {
 		align-self: center;
-		font-family: var(--face-readout);
+		font-family: var(--font-mono);
 		font-size: 0.875rem;
 		font-variant-numeric: tabular-nums;
 		line-height: 1.4;
@@ -115,12 +115,12 @@
 	.action {
 		align-self: center;
 		justify-self: end;
-		color: var(--bone-faint);
+		color: var(--text-subtle);
 		white-space: nowrap;
 	}
 
 	.row.lit .action {
-		color: var(--signal);
+		color: var(--accent);
 	}
 
 	.action svg {
@@ -134,7 +134,7 @@
 
 	.row:hover .action,
 	.row:focus-visible .action {
-		color: var(--bone);
+		color: var(--text);
 	}
 
 	@media (width < 34rem) {

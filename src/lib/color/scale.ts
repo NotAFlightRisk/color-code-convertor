@@ -12,15 +12,15 @@ const TARGETS = [0.16, 0.26, 0.37, 0.47, 0.58, 0.68, 0.78, 0.88, 0.96];
 
 const inGamutHex = (color: Color) => formatHex(toRgb(clampChroma(color, 'oklch', 'rgb')));
 
-const VOID = '#050607';
-const BONE = '#e9ebec';
+const SURFACE = '#050607';
+const TEXT = '#e9ebec';
 
-/** Whichever of the two page inks stays legible on top of a given colour. */
-export const inkOn = (hex: string) =>
-	wcagContrast(hex, VOID) >= wcagContrast(hex, BONE) ? VOID : BONE;
+/** Whichever of the two page texts stays legible on top of a given colour. */
+export const textOn = (hex: string) =>
+	wcagContrast(hex, SURFACE) >= wcagContrast(hex, TEXT) ? SURFACE : TEXT;
 
 /** The colour drives focus rings and selection, unless it is too dark to see against the ground. */
-export const signalOn = (hex: string) => (wcagContrast(hex, VOID) >= 3 ? hex : BONE);
+export const accentOn = (hex: string) => (wcagContrast(hex, SURFACE) >= 3 ? hex : TEXT);
 
 /** The colour's own lightness ladder, with the pasted colour standing in its true position. */
 export function ladder(color: Color): Step[] {

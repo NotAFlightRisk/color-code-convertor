@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatAll, inkOn, ladder, parseColor, signalOn, toHexValue } from './index';
+import { formatAll, textOn, ladder, parseColor, accentOn, toHexValue } from './index';
 
 const hex = (input: string) => {
 	const color = parseColor(input);
@@ -102,10 +102,10 @@ describe('formatting', () => {
 	});
 
 	it('picks an ink that can be read on the colour', () => {
-		expect(inkOn('#ffffff')).toBe('#050607');
-		expect(inkOn('#000000')).toBe('#e9ebec');
-		expect(signalOn('#ffffff')).toBe('#ffffff');
-		expect(signalOn('#0a0a0a')).toBe('#e9ebec');
+		expect(textOn('#ffffff')).toBe('#050607');
+		expect(textOn('#000000')).toBe('#e9ebec');
+		expect(accentOn('#ffffff')).toBe('#ffffff');
+		expect(accentOn('#0a0a0a')).toBe('#e9ebec');
 	});
 
 	it('builds a ladder holding the pasted colour in place', () => {

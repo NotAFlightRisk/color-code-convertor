@@ -2,24 +2,24 @@
 @import '@fontsource-variable/jetbrains-mono/wght.css';
 
 :root {
-	--ink-void: #050607;
-	--ink-plate: #0c0e10;
-	--ink-raised: #14181b;
-	--rule: #232a2f;
-	--rule-lit: #3d474e;
-	--bone: #e9ebec;
-	--bone-dim: #8d959b;
-	--bone-faint: #5a6268;
-	--lamp: #ffb02e;
+	--surface: #050607;
+	--surface-raised: #0c0e10;
+	--surface-hover: #14181b;
+	--border: #232a2f;
+	--border-strong: #3d474e;
+	--text: #e9ebec;
+	--text-muted: #8d959b;
+	--text-subtle: #5a6268;
+	--warning: #ffb02e;
 
-	--signal: #e9ebec;
-	--signal-ink: #050607;
+	--accent: #e9ebec;
+	--accent-contrast: #050607;
 
-	--face-legend: 'Archivo Variable', system-ui, sans-serif;
-	--face-readout: 'JetBrains Mono Variable', ui-monospace, monospace;
+	--font-ui: 'Archivo Variable', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 
-	--legend: 600 0.6875rem/1 var(--face-legend);
-	--legend-wide: 0.16em;
+	--type-label: 600 0.6875rem/1 var(--font-ui);
+	--tracking-label: 0.16em;
 
 	--s1: 0.25rem;
 	--s2: 0.5rem;
@@ -30,10 +30,10 @@
 	--s7: 3.5rem;
 
 	--gutter: clamp(var(--s4), 4vw, var(--s7));
-	--ease-cut: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease: cubic-bezier(0.16, 1, 0.3, 1);
 
 	color-scheme: dark;
-	accent-color: var(--signal);
+	accent-color: var(--accent);
 }
 
 *,
@@ -53,27 +53,27 @@ dd {
 }
 
 html {
-	background: var(--ink-void);
+	background: var(--surface);
 	-webkit-text-size-adjust: 100%;
 }
 
 body {
 	min-height: 100dvh;
-	background: var(--ink-void);
-	color: var(--bone);
-	font: 400 0.9375rem/1.55 var(--face-legend);
+	background: var(--surface);
+	color: var(--text);
+	font: 400 0.9375rem/1.55 var(--font-ui);
 	font-synthesis: none;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 }
 
 ::selection {
-	background: var(--signal);
-	color: var(--signal-ink);
+	background: var(--accent);
+	color: var(--accent-contrast);
 }
 
 :focus-visible {
-	outline: 2px solid var(--signal);
+	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 }
 
@@ -83,21 +83,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background: var(--ink-void);
+	background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--rule);
-	border: 2px solid var(--ink-void);
+	background: var(--border);
+	border: 2px solid var(--surface);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--rule-lit);
+	background: var(--border-strong);
 }
 
 @supports not selector(::-webkit-scrollbar) {
 	* {
-		scrollbar-color: var(--rule) var(--ink-void);
+		scrollbar-color: var(--border) var(--surface);
 		scrollbar-width: thin;
 	}
 }
@@ -114,15 +114,15 @@ button {
 input {
 	font: inherit;
 	color: inherit;
-	caret-color: var(--signal);
+	caret-color: var(--accent);
 }
 
 .legend {
-	font: var(--legend);
+	font: var(--type-label);
 	font-variation-settings: 'wdth' 78;
-	letter-spacing: var(--legend-wide);
+	letter-spacing: var(--tracking-label);
 	text-transform: uppercase;
-	color: var(--bone-dim);
+	color: var(--text-muted);
 }
 
 .visually-hidden {

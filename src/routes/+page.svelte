@@ -6,10 +6,10 @@
 	import Slate from '$lib/components/Slate.svelte';
 	import {
 		formatAll,
-		inkOn,
+		textOn,
 		ladder,
 		parseColor,
-		signalOn,
+		accentOn,
 		toCss,
 		toHexValue,
 		type Formatted
@@ -33,12 +33,12 @@
 	const css = $derived(toCss(shown));
 	const hex = $derived(toHexValue(shown));
 	const alpha = $derived(shown.alpha ?? 1);
-	const signal = $derived(signalOn(hex));
+	const accent = $derived(accentOn(hex));
 
 	$effect(() => {
 		const root = document.documentElement.style;
-		root.setProperty('--signal', signal);
-		root.setProperty('--signal-ink', inkOn(signal));
+		root.setProperty('--accent', accent);
+		root.setProperty('--accent-contrast', textOn(accent));
 	});
 
 	function show(next: string, remember = true) {
@@ -154,17 +154,17 @@
 		align-items: baseline;
 		gap: var(--s2) var(--s4);
 		padding: var(--s3) var(--gutter);
-		background: var(--ink-plate);
-		border-block-end: 1px solid var(--rule);
+		background: var(--surface-raised);
+		border-block-end: 1px solid var(--border);
 	}
 
 	h1 {
 		font-size: 0.75rem;
-		color: var(--bone);
+		color: var(--text);
 	}
 
 	.strap {
-		color: var(--bone-faint);
+		color: var(--text-subtle);
 	}
 
 	footer {
@@ -172,19 +172,19 @@
 		gap: var(--s3);
 		max-inline-size: 68ch;
 		padding: var(--s6) var(--gutter) var(--s7);
-		color: var(--bone-dim);
+		color: var(--text-muted);
 		font-size: 0.8125rem;
 		line-height: 1.65;
 	}
 
 	code {
-		font-family: var(--face-readout);
+		font-family: var(--font-mono);
 		font-size: 0.9em;
-		color: var(--bone);
+		color: var(--text);
 	}
 
 	a {
-		color: var(--signal);
+		color: var(--accent);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 0.25em;
 	}

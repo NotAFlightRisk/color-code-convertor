@@ -46,7 +46,7 @@
 	</div>
 
 	<div class="controls">
-		<label class="control pick" style:--swatch={hex}>
+		<label class="control pick" style:--pick={hex}>
 			<span class="legend">Pick</span>
 			<input
 				type="color"
@@ -83,8 +83,8 @@
 		grid-template-columns: minmax(0, 1fr) auto;
 		align-items: end;
 		padding: var(--s5) var(--gutter) var(--s4);
-		background: var(--ink-plate);
-		border-block-end: 1px solid var(--rule);
+		background: var(--surface-raised);
+		border-block-end: 1px solid var(--border);
 	}
 
 	.entry {
@@ -94,7 +94,7 @@
 	}
 
 	.code {
-		font-family: var(--face-readout);
+		font-family: var(--font-mono);
 		font-size: clamp(1.5rem, 4.5vw, 2.75rem);
 		font-weight: 500;
 		letter-spacing: -0.02em;
@@ -102,21 +102,21 @@
 		padding: 0 0 var(--s2);
 		background: none;
 		border: 0;
-		border-block-end: 2px solid var(--rule-lit);
-		transition: border-color 200ms var(--ease-cut);
+		border-block-end: 2px solid var(--border-strong);
+		transition: border-color 200ms var(--ease);
 	}
 
 	.code::placeholder {
-		color: var(--bone-faint);
+		color: var(--text-subtle);
 	}
 
 	.code:focus {
 		outline: none;
-		border-block-end-color: var(--signal);
+		border-block-end-color: var(--accent);
 	}
 
 	.slate.dead .code {
-		border-block-end-color: var(--lamp);
+		border-block-end-color: var(--warning);
 	}
 
 	.controls {
@@ -135,8 +135,8 @@
 		inline-size: 3rem;
 		block-size: 2.25rem;
 		padding: 0;
-		background: var(--swatch);
-		border: 1px solid var(--rule-lit);
+		background: var(--pick);
+		border: 1px solid var(--border-strong);
 		cursor: pointer;
 		appearance: none;
 	}
@@ -155,10 +155,10 @@
 	}
 
 	.fader .reading {
-		font-family: var(--face-readout);
+		font-family: var(--font-mono);
 		font-variant-numeric: tabular-nums;
 		letter-spacing: 0;
-		color: var(--bone);
+		color: var(--text);
 	}
 
 	.fader input {
@@ -171,19 +171,19 @@
 
 	.fader input::-webkit-slider-runnable-track {
 		block-size: 2px;
-		background: var(--rule-lit);
+		background: var(--border-strong);
 	}
 
 	.fader input::-moz-range-track {
 		block-size: 2px;
-		background: var(--rule-lit);
+		background: var(--border-strong);
 	}
 
 	.fader input::-webkit-slider-thumb {
 		inline-size: 0.625rem;
 		block-size: 1.5rem;
 		margin-block-start: -0.6875rem;
-		background: var(--bone);
+		background: var(--text);
 		border: 0;
 		appearance: none;
 	}
@@ -191,7 +191,7 @@
 	.fader input::-moz-range-thumb {
 		inline-size: 0.625rem;
 		block-size: 1.5rem;
-		background: var(--bone);
+		background: var(--text);
 		border: 0;
 		border-radius: 0;
 	}
@@ -205,28 +205,28 @@
 		place-items: center;
 		block-size: 2.25rem;
 		padding-inline: var(--s3);
-		font-family: var(--face-readout);
+		font-family: var(--font-mono);
 		font-size: 0.75rem;
-		border: 1px solid var(--rule-lit);
+		border: 1px solid var(--border-strong);
 		transition:
-			background-color 160ms var(--ease-cut),
-			color 160ms var(--ease-cut);
+			background-color 160ms var(--ease),
+			color 160ms var(--ease);
 	}
 
 	.roll:hover .roll-face,
 	.roll:focus-visible .roll-face {
-		background: var(--bone);
-		color: var(--ink-void);
+		background: var(--text);
+		color: var(--surface);
 	}
 
 	.status {
 		font-size: 0.75rem;
 		line-height: 1.4;
-		color: var(--bone-faint);
+		color: var(--text-subtle);
 	}
 
 	.slate.dead .status {
-		color: var(--lamp);
+		color: var(--warning);
 	}
 
 	@media (width < 48rem) {

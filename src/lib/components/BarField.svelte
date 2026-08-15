@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { inkOn, type Step } from '$lib/color';
+	import { textOn, type Step } from '$lib/color';
 
 	type Props = {
 		steps: Step[];
@@ -23,8 +23,8 @@
 				type="button"
 				class="bar"
 				class:source={step.source}
-				style:--bar={step.hex}
-				style:--ink={inkOn(step.hex)}
+				style:--bar-bg={step.hex}
+				style:--bar-text={textOn(step.hex)}
 				style:--index={index}
 				onclick={() => onpick(step.hex)}
 			>
@@ -39,7 +39,7 @@
 		{/each}
 	</div>
 
-	<div class="grounds" style:--swatch={css}>
+	<div class="grounds" style:--current={css}>
 		{#each grounds as ground (ground.id)}
 			<div class="ground" style:--ground={ground.ground}>
 				<div class="wash"></div>
@@ -53,7 +53,7 @@
 	.field {
 		display: grid;
 		grid-template-rows: 1fr auto;
-		border-block-end: 1px solid var(--rule);
+		border-block-end: 1px solid var(--border);
 	}
 
 	.bars {
@@ -68,9 +68,9 @@
 		align-items: flex-end;
 		justify-content: center;
 		padding-block-end: var(--s3);
-		background: var(--bar);
-		color: var(--ink);
-		transition: background-color 420ms var(--ease-cut);
+		background: var(--bar-bg);
+		color: var(--bar-text);
+		transition: background-color 420ms var(--ease);
 		transition-delay: calc(var(--index) * 24ms);
 	}
 
@@ -81,13 +81,13 @@
 		block-size: 2px;
 		background: currentColor;
 		opacity: 0;
-		transition: opacity 160ms var(--ease-cut);
+		transition: opacity 160ms var(--ease);
 	}
 
 	.bar.source .tick {
 		opacity: 1;
 		block-size: 3px;
-		box-shadow: 0 6px 0 var(--ink);
+		box-shadow: 0 6px 0 var(--bar-text);
 	}
 
 	.reading {
@@ -95,8 +95,8 @@
 		opacity: 0;
 		transform: translateY(0.25rem);
 		transition:
-			opacity 160ms var(--ease-cut),
-			transform 160ms var(--ease-cut);
+			opacity 160ms var(--ease),
+			transform 160ms var(--ease);
 	}
 
 	.unit {
@@ -122,7 +122,7 @@
 
 	.ground {
 		display: grid;
-		border-inline-start: 1px solid var(--ink-void);
+		border-inline-start: 1px solid var(--surface);
 	}
 
 	.ground:first-child {
@@ -132,13 +132,13 @@
 	.wash {
 		block-size: 2.5rem;
 		background:
-			linear-gradient(var(--swatch), var(--swatch)) no-repeat 50% / 60% 100%,
+			linear-gradient(var(--current), var(--current)) no-repeat 50% / 60% 100%,
 			linear-gradient(var(--ground), var(--ground));
 	}
 
 	.ground-label {
 		padding: var(--s2) var(--s3);
-		color: var(--bone-faint);
+		color: var(--text-subtle);
 	}
 
 	@media (width < 40rem) {
