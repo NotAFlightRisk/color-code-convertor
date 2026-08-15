@@ -1,0 +1,9 @@
+.git
+.github
+.impeccable
+.svelte-kit
+build
+node_modules
+*.md
+DESIGN.md
+PRODUCT.md
