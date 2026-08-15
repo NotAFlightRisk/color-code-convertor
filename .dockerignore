@@ -3,7 +3,6 @@
 .impeccable
 .svelte-kit
 build
+iains-notes
 node_modules
 *.md
-DESIGN.md
-PRODUCT.md
