@@ -130,22 +130,14 @@
 <p class="visually-hidden" aria-live="polite">{announcement}</p>
 
 <footer>
+	<p>Paste the whole CSS declaration if that's what you copied, semicolon and all.</p>
 	<p>
-		It reads hex, rgb, hsl, hsb, hwb, cmyk, lab, lch, oklab, oklch, display-p3, CSS names, decimal, <code
-			>0xAARRGGBB</code
-		>, and Flutter and Swift literals. Paste the whole CSS declaration if that's what you copied,
-		semicolon and all.
-	</p>
-	<p>
-		Two things worth knowing. Bare hex digits win over decimal, so <code>16711680</code> is the only
-		plain number read as one. And <code>#</code> plus eight digits is CSS
+		A bare number is hex at 3, 4 or 6 digits and decimal at any other length, so <code>255</code> is
+		<code>#225555</code> but <code>16711680</code> is red. <code>#</code> plus eight digits is
 		<code>RRGGBBAA</code>, while <code>0x</code> plus eight is ARGB, the way Flutter and Android write
 		it.
 	</p>
-	<p>
-		CMYK here is the naive conversion, same as every other web tool. Fine on screen, not a proof.
-		Nearest CSS name says so when it isn't exact.
-	</p>
+	<p>CMYK is the naive conversion. Fine on screen, don't send it to print.</p>
 	<p class="legend">
 		<a href="https://github.com/NotAFlightRisk/color-code-convertor">Source on GitHub</a>
 	</p>

@@ -31,16 +31,14 @@
 			autocapitalize="off"
 			autocorrect="off"
 			aria-invalid={!valid}
-			aria-describedby="signal-status"
+			aria-describedby="source-status"
 			placeholder="#3a7bd5"
 			{value}
 			oninput={(event) => oninput(event.currentTarget.value)}
 		/>
-		<p id="signal-status" class="status" role="status">
-			{#if valid}
-				Signal locked
-			{:else}
-				No signal - can't read that one. Try #3a7bd5, rgb(58 123 213) or oklch(58% .15 258)
+		<p id="source-status" class="status" role="status">
+			{#if !valid}
+				Can't read that one. Try #3a7bd5, rgb(58 123 213) or oklch(58% .15 258)
 			{/if}
 		</p>
 	</div>
@@ -220,6 +218,7 @@
 	}
 
 	.status {
+		min-block-size: 1lh;
 		font-size: 0.75rem;
 		line-height: 1.4;
 		color: var(--text-subtle);
