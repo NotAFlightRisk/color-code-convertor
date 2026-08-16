@@ -1,4 +1,4 @@
-export const SITE = 'https://color-code-convertor.peng.li/';
+export const SITE = 'https://color-code-convertor.peng.ly/';
 
 export const TITLE = 'Color code convertor - paste any format, get all of them';
 

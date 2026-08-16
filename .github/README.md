@@ -2,7 +2,7 @@
 <p align="center">
 <i>Paste a color in any format, get all seventeen others</i>
 <br />
-<b>🌐 <a href="https://color-code-convertor.peng.li/">color-code-convertor.peng.li</a></b><br />
+<b>🌐 <a href="https://color-code-convertor.peng.ly/">color-code-convertor.peng.ly</a></b><br />
 </p>
 
 ## About
@@ -10,7 +10,7 @@
 A super quick app to convert between color code format representations.
 
 <p align="center">
-  <a href="https://color-code-convertor.peng.li/">
+  <a href="https://color-code-convertor.peng.ly/">
     <img src="https://pixelflare.cc/iain/screenshots/color-code-convertor" width="700" />
   </a>
 </p>
@@ -77,7 +77,7 @@ You can also build the container with `docker build -t color-code-convertor .`
 <p  align="center">
   <a href="https://github.com/NotAFlightRisk"><img width="64" src="https://pixelflare.cc/iain/gif/penguin-dance.gif" /></a><br>
   <sup>
-    <i>Licensed under <a href="../LICENSE">MIT</a>, © <a href="https://peng.li">NotAFlightRisk</a> 2026</i>
+    <i>Licensed under <a href="../LICENSE">MIT</a>, © <a href="https://peng.ly">NotAFlightRisk</a> 2026</i>
   </sup>
 </p>
 

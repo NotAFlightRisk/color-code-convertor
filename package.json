@@ -37,7 +37,7 @@
 		"type": "git",
 		"url": "git+https://github.com/NotAFlightRisk/color-code-convertor.git"
 	},
-	"homepage": "https://color-code-convertor.peng.li",
+	"homepage": "https://color-code-convertor.peng.ly",
 	"engines": {
 		"node": "^22.12.0 || >=24.0.0"
 	},
