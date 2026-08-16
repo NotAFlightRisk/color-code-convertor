@@ -5,6 +5,7 @@
 	import Current from '$lib/components/Current.svelte';
 	import Readout from '$lib/components/Readout.svelte';
 	import Slate from '$lib/components/Slate.svelte';
+	import { DESCRIPTION, SITE, TITLE, schemaTag } from '$lib/meta';
 	import {
 		formatAll,
 		textOn,
@@ -92,12 +93,23 @@
 </script>
 
 <svelte:head>
-	<title>Color code convertor - paste any format, get all of them</title>
-	<meta
-		name="description"
-		content="Paste a colour in any notation and read it back in seventeen others. Hex, rgb, hsl, hsb, hwb, cmyk, lab, lch, oklab, oklch, display-p3, CSS names, Android, Flutter and Swift."
-	/>
+	<title>{TITLE}</title>
+	<meta name="description" content={DESCRIPTION} />
+	<link rel="canonical" href={SITE} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Color code convertor" />
+	<meta property="og:url" content={SITE} />
+	<meta property="og:title" content={TITLE} />
+	<meta property="og:description" content={DESCRIPTION} />
+	<meta property="og:locale" content="en_GB" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={TITLE} />
+	<meta name="twitter:description" content={DESCRIPTION} />
+
 	<meta name="theme-color" content={hex} />
+	{@html schemaTag}
 </svelte:head>
 
 <svelte:window onpaste={catchPaste} />
