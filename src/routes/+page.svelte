@@ -142,7 +142,6 @@
 <p class="visually-hidden" aria-live="polite">{announcement}</p>
 
 <footer>
-	<p>Paste the whole CSS declaration if that's what you copied, semicolon and all.</p>
 	<p>
 		A bare number is hex at 3, 4 or 6 digits and decimal at any other length, so <code>255</code> is
 		<code>#225555</code> but <code>16711680</code> is red. <code>#</code> plus eight digits is
