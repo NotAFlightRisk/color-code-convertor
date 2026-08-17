@@ -4,7 +4,7 @@ Need a hand? Here's where to go 👇
 
 ## Before you ask
 
-Have a look at the [README](./README.md), especially [Usage](./README.md#usage) and [Configuration](./README.md#configuration). Then search [existing issues](https://github.com/NotAFlightRisk/color-code-convertor/issues?q=is%3Aissue), because someone's likley hit the same thing.
+Have a look at the [README](./README.md), especially [About](./README.md#about) and [Deployment](./README.md#deployment). Then search [existing issues](https://github.com/NotAFlightRisk/color-code-convertor/issues?q=is%3Aissue), because someone's likely hit the same thing.
 
 ---
 
