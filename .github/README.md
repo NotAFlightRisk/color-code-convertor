@@ -24,7 +24,7 @@ A super quick app to convert between color code format representations.
 Fork the repo, login to any static hosting provider, and import it. Or just use the 1-click deploy button below 👇
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNotAFlightRisk%2Fcolor-code-convertor)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=NotAFlightRisk/color-code-convertor)   
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=NotAFlightRisk/color-code-convertor)
 
 ### Option 2: Docker
 
@@ -61,7 +61,7 @@ Before committing, you should also run: `npm run check` (types), `npm test` (tes
 
 You can also build the container with `docker build -t color-code-convertor .`
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1335365165)   
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1335365165)
 
 ---
 
