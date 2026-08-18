@@ -37,6 +37,12 @@ const fn = (name: string, parts: string[], alpha: number, comma = false) => {
 	return `${name}(${body}${comma ? ', ' : ' / '}${num(alpha, 3)})`;
 };
 
+/** Anything sRGB can hold is read off this, so every such format agrees with the hex. */
+const toSrgb = (color: Color) => {
+	const rgb = toRgb(color);
+	return { ...rgb, r: clamp(rgb.r), g: clamp(rgb.g), b: clamp(rgb.b) };
+};
+
 const toInt = (color: Color) => {
 	const { r, g, b } = toRgb(color);
 	return (channel(r) << 16) | (channel(g) << 8) | channel(b);
@@ -44,13 +50,12 @@ const toInt = (color: Color) => {
 
 const toCmyk = (color: Color) => {
 	const { r, g, b } = toRgb(color);
-	const [red, green, blue] = [clamp(r), clamp(g), clamp(b)];
-	const k = 1 - Math.max(red, green, blue);
+	const k = 1 - Math.max(r, g, b);
 	if (k === 1) return { c: 0, m: 0, y: 0, k: 1 };
 	return {
-		c: (1 - red - k) / (1 - k),
-		m: (1 - green - k) / (1 - k),
-		y: (1 - blue - k) / (1 - k),
+		c: (1 - r - k) / (1 - k),
+		m: (1 - g - k) / (1 - k),
+		y: (1 - b - k) / (1 - k),
 		k
 	};
 };
@@ -74,17 +79,17 @@ export const toCss = (color: Color) => formatCss(color) ?? formatHex(toRgb(color
 export const toHexValue = (color: Color) => formatHex(toRgb(color));
 
 export function formatAll(color: Color): Formatted[] {
-	const rgb = toRgb(color);
-	const hsl = toHsl(color);
-	const hsv = toHsv(color);
-	const hwb = toHwb(color);
+	const rgb = toSrgb(color);
+	const hsl = toHsl(rgb);
+	const hsv = toHsv(rgb);
+	const hwb = toHwb(rgb);
 	const lab = toLab(color);
 	const lch = toLch(color);
 	const oklab = toOklab(color);
 	const oklch = toOklch(color);
 	const p3 = toP3(color);
-	const cmyk = toCmyk(color);
-	const named = toName(color);
+	const cmyk = toCmyk(rgb);
+	const named = toName(rgb);
 	const alpha = alphaOf(color);
 	const argb = [Math.round(alpha * 255), channel(rgb.r), channel(rgb.g), channel(rgb.b)]
 		.map(hex2)
@@ -164,7 +169,7 @@ export function formatAll(color: Color): Formatted[] {
 			value: named.name,
 			note: named.approximate ? 'closest match' : undefined
 		},
-		{ id: 'int', label: 'Decimal', value: String(toInt(color)) },
+		{ id: 'int', label: 'Decimal', value: String(toInt(rgb)) },
 		{ id: 'android', label: 'Android', value: `#${argb}`, note: 'AARRGGBB' },
 		{ id: 'flutter', label: 'Flutter', value: `Color(0x${argb})` },
 		{
