@@ -5,6 +5,7 @@
 	import Current from '$lib/components/Current.svelte';
 	import Readout from '$lib/components/Readout.svelte';
 	import Slate from '$lib/components/Slate.svelte';
+	import { fromHash, toHash } from '$lib/link';
 	import { DESCRIPTION, SITE, TITLE, schemaTag } from '$lib/meta';
 	import {
 		formatAll,
@@ -52,7 +53,7 @@
 		color = parsed;
 		override = null;
 		if (remember) {
-			history.replaceState(history.state, '', `#${encodeURIComponent(next.replace(/^#/, ''))}`);
+			history.replaceState(history.state, '', toHash(next));
 		}
 	}
 
@@ -85,7 +86,7 @@
 	}
 
 	onMount(() => {
-		const fromLink = decodeURIComponent(location.hash.slice(1)).trim();
+		const fromLink = fromHash(location.hash).trim();
 		if (fromLink) show(fromLink, false);
 		if (matchMedia('(pointer: fine)').matches) slate?.focus();
 		return () => clearTimeout(timer);
