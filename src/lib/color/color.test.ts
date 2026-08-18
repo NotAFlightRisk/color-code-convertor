@@ -10,6 +10,12 @@ const hex = (input: string) => {
 const format = (input: string, id: string) =>
 	formatAll(parseColor(input)!).find((entry) => entry.id === id)?.value;
 
+const channels = (value: string) => [1, 3, 5].map((i) => parseInt(value.slice(i, i + 2), 16));
+
+/** Printed percentages carry one decimal, so a channel can land a step either side. */
+const sameColour = (a: string, b: string) =>
+	channels(a).every((value, index) => Math.abs(value - channels(b)[index]) <= 1);
+
 describe('parsing', () => {
 	it.each([
 		['#ff0000', '#ff0000'],
@@ -116,6 +122,27 @@ describe('formatting', () => {
 		expect(steps.map((step) => step.lightness)).toEqual(
 			[...steps.map((s) => s.lightness)].sort((a, b) => a - b)
 		);
+	});
+
+	it.each(['oklch(72.3% 0.219 149.579)', 'lab(100% 40 -30)'])(
+		'keeps the sRGB formats agreeing with the hex for %s',
+		(wide) => {
+			const expected = format(wide, 'hex')!;
+			for (const id of ['hsl', 'hsb', 'hwb']) {
+				const value = format(wide, id)!;
+				expect(sameColour(hex(value), expected), `${id}: ${value} is ${hex(value)}`).toBe(true);
+			}
+		}
+	);
+
+	it('names the colour it can actually show', () => {
+		expect(format('lab(100% 40 -30)', 'name')).toBe('thistle');
+	});
+
+	it('leaves the wide-gamut formats alone', () => {
+		const wide = 'oklch(72.3% 0.219 149.579)';
+		expect(format(wide, 'oklch')).toBe('oklch(72.3% 0.219 149.58)');
+		expect(format(wide, 'p3')).toBe('color(display-p3 0.3087 0.7748 0.3743)');
 	});
 
 	it('round-trips every format it prints', () => {
