@@ -5,7 +5,7 @@
 	import Current from '$lib/components/Current.svelte';
 	import Readout from '$lib/components/Readout.svelte';
 	import Slate from '$lib/components/Slate.svelte';
-	import { fromHash, toHash } from '$lib/link';
+	import { fromHash, fromQuery, toHash, toQuery } from '$lib/link';
 	import { DESCRIPTION, SITE, TITLE, schemaTag } from '$lib/meta';
 	import {
 		formatAll,
@@ -45,6 +45,11 @@
 		root.setProperty('--accent-contrast', textOn(accent));
 	});
 
+	function stamp() {
+		const url = `${location.pathname}${toQuery(location.search, override)}${toHash(input)}`;
+		history.replaceState(history.state, '', url);
+	}
+
 	function show(next: string, remember = true) {
 		input = next;
 		const parsed = parseColor(next);
@@ -52,9 +57,12 @@
 		if (!parsed) return;
 		color = parsed;
 		override = null;
-		if (remember) {
-			history.replaceState(history.state, '', toHash(next));
-		}
+		if (remember) stamp();
+	}
+
+	function fade(next: number) {
+		override = next;
+		stamp();
 	}
 
 	function roll() {
@@ -88,6 +96,7 @@
 	onMount(() => {
 		const fromLink = fromHash(location.hash).trim();
 		if (fromLink) show(fromLink, false);
+		override = fromQuery(location.search);
 		if (matchMedia('(pointer: fine)').matches) slate?.focus();
 		return () => clearTimeout(timer);
 	});
@@ -132,7 +141,7 @@
 		{alpha}
 		{valid}
 		oninput={show}
-		onalpha={(next) => (override = next)}
+		onalpha={fade}
 		onroll={roll}
 	/>
 

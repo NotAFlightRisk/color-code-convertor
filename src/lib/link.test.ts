@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fromHash, toHash } from './link';
+import { fromHash, fromQuery, toHash, toQuery } from './link';
 import { parseColor, toHexValue } from './color';
 
 describe('share links', () => {
@@ -31,4 +31,26 @@ describe('share links', () => {
 	])('leaves %s as it found it', (hash, expected) => {
 		expect(fromHash(hash)).toBe(expected);
 	});
+});
+
+describe('the alpha beside the link', () => {
+	it.each([0, 0.5, 1])('round-trips %s', (alpha) => {
+		expect(fromQuery(toQuery('', alpha))).toBe(alpha);
+	});
+
+	it('writes nothing when the slider was left alone', () => {
+		expect(toQuery('', null)).toBe('');
+	});
+
+	it('leaves everything else in the query where it was', () => {
+		expect(toQuery('?utm_source=x&a=0.2', 0.7)).toBe('?utm_source=x&a=0.7');
+		expect(toQuery('?utm_source=x&a=0.2', null)).toBe('?utm_source=x');
+	});
+
+	it.each(['', '?a=', '?a=2', '?a=-1', '?a=half', '?b=0.5'])(
+		'reads no alpha out of "%s"',
+		(search) => {
+			expect(fromQuery(search)).toBe(null);
+		}
+	);
 });
