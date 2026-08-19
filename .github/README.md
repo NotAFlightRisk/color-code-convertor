@@ -65,14 +65,6 @@ You can also build the container with `docker build -t color-code-convertor .`
 
 ---
 
-## Credits
-
-##### Contributors
-
-[![contributors badge](https://readme-contribs.as93.net/contributors/NotAFlightRisk/color-code-convertor?shape=squircle)](https://github.com/NotAFlightRisk/color-code-convertor/graphs/contributors)
-
----
-
 <!-- License + Copyright -->
 <p  align="center">
   <a href="https://github.com/NotAFlightRisk"><img width="64" src="https://pixelflare.cc/iain/gif/penguin-dance.gif" /></a><br>
