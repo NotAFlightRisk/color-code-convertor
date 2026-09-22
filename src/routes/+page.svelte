@@ -13,6 +13,7 @@
 		ladder,
 		parseColor,
 		accentOn,
+		markUri,
 		toCss,
 		toHexValue,
 		type Formatted
@@ -37,6 +38,7 @@
 	const hex = $derived(toHexValue(shown));
 	const alpha = $derived(shown.alpha ?? 1);
 	const accent = $derived(accentOn(hex));
+	const icon = $derived(markUri(shown));
 	const name = $derived(entries.find((entry) => entry.id === 'name')!.value);
 
 	$effect(() => {
@@ -118,6 +120,7 @@
 	<meta name="twitter:title" content={TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
 
+	<link rel="icon" href={icon} />
 	<meta name="theme-color" content={hex} />
 	{@html schemaTag}
 </svelte:head>
