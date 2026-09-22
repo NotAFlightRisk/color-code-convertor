@@ -25,6 +25,7 @@
 	let input = $state(START);
 	let color = $state<Color>(parseColor(START)!);
 	let override = $state<number | null>(null);
+	let picked = $state(false);
 	let valid = $state(true);
 	let copied = $state<string | null>(null);
 	let announcement = $state('');
@@ -38,7 +39,7 @@
 	const hex = $derived(toHexValue(shown));
 	const alpha = $derived(shown.alpha ?? 1);
 	const accent = $derived(accentOn(hex));
-	const icon = $derived(markUri(shown));
+	const icon = $derived(markUri(picked ? shown : undefined));
 	const name = $derived(entries.find((entry) => entry.id === 'name')!.value);
 
 	$effect(() => {
@@ -58,6 +59,7 @@
 		valid = parsed !== null;
 		if (!parsed) return;
 		color = parsed;
+		picked = true;
 		override = null;
 		if (remember) stamp();
 	}
