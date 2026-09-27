@@ -21,6 +21,9 @@
 		});
 		return `linear-gradient(to right, ${stops.join(', ')})`;
 	};
+
+	const position = (channel: Channel, value: number) =>
+		Math.min(1, Math.max(0, (value - channel.min) / (channel.max - channel.min)));
 </script>
 
 <ul class="channels">
@@ -29,19 +32,25 @@
 		<li class="channel">
 			<label>
 				<span class="legend">{channel.label}</span>
-				<input
-					type="range"
-					min={channel.min}
-					max={channel.max}
-					step={channel.step}
-					{value}
-					disabled={channel.locked}
-					aria-valuetext={channel.say(value)}
-					style:--track={track(channel)}
-					oninput={(event) => ontune(channel.write(color, Number(event.currentTarget.value)))}
-				/>
+				{#if channel.locked}
+					<span class="track" style:--track={track(channel)} style:--at={position(channel, value)}
+					></span>
+				{:else}
+					<input
+						type="range"
+						min={channel.min}
+						max={channel.max}
+						step={channel.step}
+						{value}
+						aria-valuetext={channel.say(value)}
+						style:--track={track(channel)}
+						oninput={(event) => ontune(channel.write(color, Number(event.currentTarget.value)))}
+					/>
+				{/if}
 			</label>
-			<span class="reading" aria-hidden="true">{channel.say(value)}</span>
+			<span class="reading" aria-hidden={channel.locked ? undefined : 'true'}>
+				{channel.say(value)}
+			</span>
 		</li>
 	{/each}
 </ul>
@@ -77,18 +86,33 @@
 		text-align: end;
 	}
 
-	input {
+	input,
+	.track {
 		inline-size: 100%;
 		block-size: 1.75rem;
 		margin: 0;
 		background: var(--track);
 		border: 1px solid var(--border);
+	}
+
+	.track {
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset-block: -0.3125rem;
+			inset-inline-start: calc(var(--at) * 100%);
+			inline-size: 0.5rem;
+			translate: -50%;
+			background: var(--text-muted);
+			border: 2px solid var(--surface);
+		}
+	}
+
+	input {
 		cursor: pointer;
 		appearance: none;
-
-		&:disabled {
-			cursor: default;
-		}
 
 		&::-webkit-slider-thumb {
 			inline-size: 0.5rem;

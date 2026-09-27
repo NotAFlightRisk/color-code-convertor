@@ -13,9 +13,9 @@ export default {
 		{
 			heading: 'Reading an HSL value',
 			body: [
-				'Take `hsl(214.84, 64.8%, 53.1%)`, which is `#3A7BD5`. The first number is the hue, an angle round a colour wheel: `0` is red, `120` is green, `240` is blue, and `360` brings you back to red. Everything else is somewhere in between, so 214 is a blue leaning slightly towards cyan.',
+				'Take `hsl(214.84, 64.9%, 53.1%)`, which is `#3A7BD5`. The first number is the hue, an angle round a colour wheel: `0` is red, `120` is green, `240` is blue, and `360` brings you back to red. Everything else is somewhere in between, so 214 is a blue leaning slightly towards cyan.',
 				"Saturation is how much colour there is. At `0%` you get grey whatever the hue says, and at `100%` it's as vivid as it goes. Lightness runs from `0%` (black) to `100%` (white), with the pure, full-strength colour at exactly `50%`.",
-				'A fourth number, if there is one, is alpha. `hsla(214.84, 64.8%, 53.1%, 0.5)` is the same blue at half opacity.'
+				'A fourth number, if there is one, is alpha. `hsla(214.84, 64.9%, 53.1%, 0.5)` is the same blue at half opacity.'
 			]
 		},
 		{
@@ -35,7 +35,7 @@ export default {
 		{
 			heading: 'Same word, different meaning',
 			body: [
-				"HSB uses the word saturation for something else. That `#3A7BD5` is `64.8%` saturated in HSL and `72.8%` in HSB, so copying the number out of a design tool's HSB picker into `hsl()` won't give you the colour you think. Paste the whole value into the converter instead."
+				"HSB uses the word saturation for something else. That `#3A7BD5` is `64.9%` saturated in HSL and `72.8%` in HSB, so copying the number out of a design tool's HSB picker into `hsl()` won't give you the colour you think. Paste the whole value into the converter instead."
 			]
 		}
 	],

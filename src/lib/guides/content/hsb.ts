@@ -28,14 +28,14 @@ export default {
 		{
 			heading: "It isn't CSS",
 			body: [
-				"Browsers don't understand `hsb()` or `hsv()`, it was never added to CSS. So when you copy a colour out of a picker as HSB, you'll need to convert it before it'll go in a stylesheet. Paste it into the box above and grab the hex, HSL or HWB instead.",
+				"Browsers don't understand `hsb()` or `hsv()`, it was never added to CSS. So when you copy a colour out of a picker as HSB, you'll need to convert it before it'll go in a stylesheet. Paste it into the converter on the home page and grab the hex, HSL or HWB instead.",
 				'HWB is the closest thing CSS has. It uses the same hue and describes the same square from a different angle, with whiteness and blackness in place of saturation and brightness.'
 			]
 		},
 		{
 			heading: 'Same word, different number',
 			body: [
-				"HSB's saturation isn't HSL's saturation. That same blue is `72.8%` saturated in HSB and `64.8%` in HSL, and pale colours are where it really goes wrong: `#FFE0E0`, a faint pink, is `12%` saturated in HSB and `100%` in HSL.",
+				"HSB's saturation isn't HSL's saturation. That same blue is `72.8%` saturated in HSB and `64.9%` in HSL, and pale colours are where it really goes wrong: `#FFE0E0`, a faint pink, is `12%` saturated in HSB and `100%` in HSL.",
 				"So don't copy numbers between the two by hand. Paste the whole value in and let the converter sort it out."
 			]
 		}

@@ -21,7 +21,7 @@ export default {
 		{
 			heading: "It's LAB, just pointing a different way",
 			body: [
-				"LCH isn't a new colour space. It's LAB described in polar form - the same lightness, with `a` and `b` swapped for a distance from grey (chroma) and a direction (hue). Any LAB colour has exactly one LCH twin, and the converter above flips between them without losing anything.",
+				"LCH isn't a new colour space. It's LAB described in polar form - the same lightness, with `a` and `b` swapped for a distance from grey (chroma) and a direction (hue). Every LAB colour has an LCH twin (greys just don't get a meaningful hue), and the converter above flips between them without losing anything.",
 				"The payoff is that the numbers finally match how you think about colour. Want a lighter version? Raise the lightness. Want it more muted? Lower the chroma. The hue doesn't budge, which is more then you can say for hex."
 			]
 		},

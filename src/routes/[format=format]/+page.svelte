@@ -72,7 +72,7 @@
 			onroll={pick.roll}
 		/>
 		<Anatomy
-			name={format.name}
+			name={entry.label}
 			value={entry.value}
 			note={entry.note}
 			parts={guide.parts}
