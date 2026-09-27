@@ -1,160 +1,65 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Color } from 'culori/fn';
 	import BarField from '$lib/components/BarField.svelte';
 	import Current from '$lib/components/Current.svelte';
+	import FormatLinks from '$lib/components/FormatLinks.svelte';
+	import Head from '$lib/components/Head.svelte';
+	import Masthead from '$lib/components/Masthead.svelte';
 	import Readout from '$lib/components/Readout.svelte';
 	import Slate from '$lib/components/Slate.svelte';
-	import { fromHash, fromQuery, toHash, toQuery } from '$lib/link';
-	import { DESCRIPTION, SITE, TITLE, schemaTag } from '$lib/meta';
-	import {
-		formatAll,
-		textOn,
-		ladder,
-		parseColor,
-		accentOn,
-		markUri,
-		toCss,
-		toHexValue,
-		type Formatted
-	} from '$lib/color';
+	import { formatAll, ladder } from '$lib/color';
+	import { FORMATS } from '$lib/guides';
+	import { APP_SCHEMA, DESCRIPTION, SITE, TITLE } from '$lib/meta';
+	import { Clip, Pick } from '$lib/pick.svelte';
 
-	const START = '#3a7bd5';
-	const HOLD = 1900;
-
-	let input = $state(START);
-	let color = $state<Color>(parseColor(START)!);
-	let override = $state<number | null>(null);
-	let picked = $state(false);
-	let valid = $state(true);
-	let copied = $state<string | null>(null);
-	let announcement = $state('');
+	const pick = new Pick();
+	const clip = new Clip();
 	let slate = $state<{ focus: () => void } | null>(null);
-	let timer: ReturnType<typeof setTimeout> | undefined;
 
-	const shown = $derived(override === null ? color : { ...color, alpha: override });
-	const entries = $derived(formatAll(shown));
-	const steps = $derived(ladder(shown));
-	const css = $derived(toCss(shown));
-	const hex = $derived(toHexValue(shown));
-	const alpha = $derived(shown.alpha ?? 1);
-	const accent = $derived(accentOn(hex));
-	const icon = $derived(markUri(picked ? shown : undefined));
+	const entries = $derived(formatAll(pick.shown));
+	const steps = $derived(ladder(pick.shown));
 	const name = $derived(entries.find((entry) => entry.id === 'name')!.value);
 
-	$effect(() => {
-		const root = document.documentElement.style;
-		root.setProperty('--accent', accent);
-		root.setProperty('--accent-contrast', textOn(accent));
-	});
-
-	function stamp() {
-		const url = `${location.pathname}${toQuery(location.search, override)}${toHash(input)}`;
-		history.replaceState(history.state, '', url);
-	}
-
-	function show(next: string, remember = true) {
-		input = next;
-		const parsed = parseColor(next);
-		valid = parsed !== null;
-		if (!parsed) return;
-		color = parsed;
-		picked = true;
-		override = null;
-		if (remember) stamp();
-	}
-
-	function fade(next: number) {
-		override = next;
-		stamp();
-	}
-
-	function roll() {
-		const digits = Array.from({ length: 6 }, () =>
-			Math.floor(Math.random() * 16).toString(16)
-		).join('');
-		show(`#${digits}`);
-	}
-
-	async function copy(entry: Formatted) {
-		try {
-			await navigator.clipboard.writeText(entry.value);
-		} catch {
-			announcement = 'Your browser blocked the clipboard, so copy it by hand.';
-			return;
-		}
-		copied = entry.id;
-		announcement = `${entry.label} copied: ${entry.value}`;
-		clearTimeout(timer);
-		timer = setTimeout(() => (copied = null), HOLD);
-	}
-
-	function catchPaste(event: ClipboardEvent) {
-		if (event.target instanceof HTMLInputElement) return;
-		const text = event.clipboardData?.getData('text')?.trim();
-		if (!text) return;
-		event.preventDefault();
-		show(text);
-	}
-
 	onMount(() => {
-		const fromLink = fromHash(location.hash).trim();
-		if (fromLink) show(fromLink, false);
-		override = fromQuery(location.search);
+		pick.restore();
 		if (matchMedia('(pointer: fine)').matches) slate?.focus();
-		return () => clearTimeout(timer);
 	});
 </script>
 
-<svelte:head>
-	<title>{TITLE}</title>
-	<meta name="description" content={DESCRIPTION} />
-	<link rel="canonical" href={SITE} />
+<Head
+	title={TITLE}
+	description={DESCRIPTION}
+	url={SITE}
+	hex={pick.hex}
+	icon={pick.icon}
+	schema={APP_SCHEMA}
+/>
 
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="Color code convertor" />
-	<meta property="og:url" content={SITE} />
-	<meta property="og:title" content={TITLE} />
-	<meta property="og:description" content={DESCRIPTION} />
-	<meta property="og:locale" content="en_GB" />
+<svelte:window onpaste={pick.paste} />
 
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={TITLE} />
-	<meta name="twitter:description" content={DESCRIPTION} />
-
-	<link rel="icon" href={icon} />
-	<meta name="theme-color" content={hex} />
-	{@html schemaTag}
-</svelte:head>
-
-<svelte:window onpaste={catchPaste} />
-
-<header>
-	<h1 class="legend">Color code convertor</h1>
-	<p class="legend strap">Paste one format, take any of the other seventeen</p>
-</header>
+<Masthead />
 
 <main>
-	<Current {css} {hex} {name} {alpha} />
+	<Current css={pick.css} hex={pick.hex} {name} alpha={pick.alpha} />
 
-	<BarField {steps} {css} onpick={show} />
+	<BarField {steps} css={pick.css} onpick={pick.show} />
 
 	<Slate
 		bind:this={slate}
-		value={input}
-		{hex}
-		{alpha}
-		{valid}
-		oninput={show}
-		onalpha={fade}
-		onroll={roll}
+		value={pick.input}
+		hex={pick.hex}
+		alpha={pick.alpha}
+		valid={pick.valid}
+		oninput={pick.show}
+		onalpha={pick.fade}
+		onroll={pick.roll}
 	/>
 
 	<h2 class="visually-hidden">Every format</h2>
-	<Readout {entries} {copied} oncopy={copy} />
+	<Readout {entries} copied={clip.copied} oncopy={clip.copy} />
 </main>
 
-<p class="visually-hidden" aria-live="polite">{announcement}</p>
+<p class="visually-hidden" aria-live="polite">{clip.announcement}</p>
 
 <footer>
 	<p>
@@ -164,31 +69,13 @@
 		it.
 	</p>
 	<p>CMYK is the naive conversion. Fine on screen, don't send it to print.</p>
+	<FormatLinks heading="Every format, explained" formats={FORMATS} link={pick.link} />
 	<p class="legend">
 		<a href="https://github.com/NotAFlightRisk/color-code-convertor">Source on GitHub</a>
 	</p>
 </footer>
 
 <style>
-	header {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: baseline;
-		gap: var(--s2) var(--s4);
-		padding: var(--s3) var(--gutter);
-		background: var(--surface-raised);
-		border-block-end: 1px solid var(--border);
-	}
-
-	h1 {
-		font-size: 0.75rem;
-		color: var(--text);
-	}
-
-	.strap {
-		color: var(--text-subtle);
-	}
-
 	footer {
 		display: grid;
 		gap: var(--s3);
