@@ -28,7 +28,7 @@ const numbers = (input: string) => {
 const alphaOf = (raw: { value: number; percent: boolean } | undefined) =>
 	raw === undefined ? 1 : clamp(raw.percent ? raw.value / 100 : raw.value);
 
-const fromCmyk = (c: number, m: number, y: number, k: number, alpha: number): Color => ({
+export const fromCmyk = (c: number, m: number, y: number, k: number, alpha: number): Color => ({
 	mode: 'rgb',
 	r: (1 - clamp(c)) * (1 - clamp(k)),
 	g: (1 - clamp(m)) * (1 - clamp(k)),

@@ -48,7 +48,7 @@ const toInt = (color: Color) => {
 	return (channel(r) << 16) | (channel(g) << 8) | channel(b);
 };
 
-const toCmyk = (color: Color) => {
+export const toCmyk = (color: Color) => {
 	const { r, g, b } = toRgb(color);
 	const k = 1 - Math.max(r, g, b);
 	if (k === 1) return { c: 0, m: 0, y: 0, k: 1 };
@@ -74,7 +74,8 @@ const toName = (color: Color) => {
 };
 
 /** CSS-ready string for painting the colour itself, wide gamut kept where the browser allows. */
-export const toCss = (color: Color) => formatCss(color) ?? formatHex(toRgb(color));
+export const toCss = (color: Color) =>
+	formatCss(color.mode === 'hsv' ? toRgb(color) : color) ?? formatHex(toRgb(color));
 
 export const toHexValue = (color: Color) => formatHex(toRgb(color));
 
