@@ -9,7 +9,7 @@
 
 	let { id, samples, onpick }: Props = $props();
 
-	/** Names print as the first exact match, so aqua would pose as cyan without this */
+	/** Names keep their own spelling, since aqua and cyan share a hex. */
 	const chips = $derived(
 		samples.map((sample) => {
 			const color = parseColor(sample)!;

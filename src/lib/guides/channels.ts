@@ -39,7 +39,7 @@ const hue = (mode: Mode) => channel('Hue', mode, 'h', 360, { unit: '°', step: 1
 const byte = (label: string, key: string) =>
 	channel(label, 'rgb', key, 1, { scale: 255, step: 1 / 255 });
 
-/** Naive CMYK always zeroes one of C, M or Y, so dragging one would just snap back */
+/** Ink levels to look at rather than drag, as naive CMYK always zeroes one of C, M or Y. */
 const ink = (label: string, key: 'c' | 'm' | 'y' | 'k'): Channel => ({
 	label,
 	min: 0,
