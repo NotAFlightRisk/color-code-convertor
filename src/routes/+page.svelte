@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import BarField from '$lib/components/BarField.svelte';
-	import Current from '$lib/components/Current.svelte';
-	import FormatLinks from '$lib/components/FormatLinks.svelte';
-	import Head from '$lib/components/Head.svelte';
-	import Masthead from '$lib/components/Masthead.svelte';
-	import Readout from '$lib/components/Readout.svelte';
-	import Slate from '$lib/components/Slate.svelte';
-	import { formatAll, ladder } from '$lib/color';
-	import { FORMATS } from '$lib/guides';
-	import { APP_SCHEMA, DESCRIPTION, SITE, TITLE } from '$lib/meta';
-	import { Clip, Pick } from '$lib/pick.svelte';
+	import BarField from '#lib/components/BarField.svelte';
+	import Current from '#lib/components/Current.svelte';
+	import FormatLinks from '#lib/components/FormatLinks.svelte';
+	import Head from '#lib/components/Head.svelte';
+	import Masthead from '#lib/components/Masthead.svelte';
+	import Readout from '#lib/components/Readout.svelte';
+	import Slate from '#lib/components/Slate.svelte';
+	import { formatAll, ladder } from '#lib/color/index.js';
+	import { FORMATS } from '#lib/guides/index.js';
+	import { APP_SCHEMA, DESCRIPTION, SITE, TITLE } from '#lib/meta.js';
+	import { Clip, Pick } from '#lib/pick.svelte.js';
 
 	const pick = new Pick();
 	const clip = new Clip();

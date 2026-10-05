@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { textOn } from '$lib/color';
+	import { textOn } from '#lib/color/index.js';
 
 	type Props = {
 		css: string;

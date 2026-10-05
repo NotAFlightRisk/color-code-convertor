@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { formatAll, parseColor, toCss } from '$lib/color';
+	import { formatAll, parseColor, toCss } from '#lib/color/index.js';
 
 	type Props = {
 		id: string;

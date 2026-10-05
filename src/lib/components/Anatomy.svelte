@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { anatomy } from '$lib/guides/anatomy';
+	import { anatomy } from '#lib/guides/anatomy.js';
 
 	type Props = {
 		name: string;

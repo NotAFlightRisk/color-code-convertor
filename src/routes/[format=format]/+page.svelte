@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Color } from 'culori/fn';
-	import Anatomy from '$lib/components/Anatomy.svelte';
-	import Channels from '$lib/components/Channels.svelte';
-	import Current from '$lib/components/Current.svelte';
-	import Examples from '$lib/components/Examples.svelte';
-	import FormatLinks from '$lib/components/FormatLinks.svelte';
-	import Head from '$lib/components/Head.svelte';
-	import Masthead from '$lib/components/Masthead.svelte';
-	import Prose from '$lib/components/Prose.svelte';
-	import Slate from '$lib/components/Slate.svelte';
-	import { formatAll } from '$lib/color';
-	import { EXAMPLES, FORMATS, formatFor } from '$lib/guides';
-	import { SITE, guideSchema } from '$lib/meta';
-	import { Clip, Pick } from '$lib/pick.svelte';
+	import Anatomy from '#lib/components/Anatomy.svelte';
+	import Channels from '#lib/components/Channels.svelte';
+	import Current from '#lib/components/Current.svelte';
+	import Examples from '#lib/components/Examples.svelte';
+	import FormatLinks from '#lib/components/FormatLinks.svelte';
+	import Head from '#lib/components/Head.svelte';
+	import Masthead from '#lib/components/Masthead.svelte';
+	import Prose from '#lib/components/Prose.svelte';
+	import Slate from '#lib/components/Slate.svelte';
+	import { formatAll } from '#lib/color/index.js';
+	import { EXAMPLES, FORMATS, formatFor } from '#lib/guides/index.js';
+	import { SITE, guideSchema } from '#lib/meta.js';
+	import { Clip, Pick } from '#lib/pick.svelte.js';
 
 	let { data } = $props();
 
