@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Format } from '$lib/guides';
+	import type { Format } from '#lib/guides/index.js';
 
 	type Props = {
 		heading: string;

@@ -1,4 +1,4 @@
-import { FORMATS, formatFor, guideFor } from '$lib/guides';
+import { FORMATS, formatFor, guideFor } from '#lib/guides/index.js';
 import type { EntryGenerator, PageLoad } from './$types';
 
 export const trailingSlash = 'always';

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { textOn, type Step } from '$lib/color';
+	import { textOn, type Step } from '#lib/color/index.js';
 
 	type Props = {
 		steps: Step[];

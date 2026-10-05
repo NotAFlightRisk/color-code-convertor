@@ -1,5 +1,5 @@
 import type { Color } from 'culori/fn';
-import { replaceState } from '$app/navigation';
+import { goto } from '$app/navigation';
 import { page } from '$app/state';
 import { markUri, parseColor, toCss, toHexValue, type Formatted } from './color';
 import { fromHash, fromQuery, toHash, toQuery } from './link';
@@ -71,7 +71,7 @@ export class Pick {
 
 	private stamp() {
 		const url = `${location.pathname}${toQuery(location.search, this.override)}${toHash(this.input)}`;
-		replaceState(url, page.state);
+		goto(url, { shallow: true, replace: true, state: page.state });
 	}
 }
 

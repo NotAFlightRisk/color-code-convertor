@@ -1,5 +1,5 @@
-import { FORMATS } from '$lib/guides';
-import { SITE } from '$lib/meta';
+import { FORMATS } from '#lib/guides/index.js';
+import { SITE } from '#lib/meta.js';
 
 export const prerender = true;
 

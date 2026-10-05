@@ -1,6 +1,6 @@
 import { converter } from 'culori/fn';
 import type { Color } from 'culori/fn';
-import { fromCmyk, toCmyk } from '$lib/color';
+import { fromCmyk, toCmyk } from '#lib/color/index.js';
 import type { Channel } from './types';
 
 type Mode = 'rgb' | 'hsl' | 'hsv' | 'hwb' | 'lab' | 'lch' | 'oklab' | 'oklch' | 'p3';

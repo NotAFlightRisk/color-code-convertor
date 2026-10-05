@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { accentOn, textOn } from '$lib/color';
-	import { NAME, schemaTag } from '$lib/meta';
+	import { accentOn, textOn } from '#lib/color/index.js';
+	import { NAME, schemaTag } from '#lib/meta.js';
 
 	type Props = {
 		title: string;

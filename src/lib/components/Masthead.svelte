@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { NAME } from '$lib/meta';
+	import { NAME } from '#lib/meta.js';
 
 	type Props = {
 		crumb?: string;

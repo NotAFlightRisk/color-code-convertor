@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Formatted } from '$lib/color';
+	import type { Formatted } from '#lib/color/index.js';
 
 	type Props = {
 		entries: Formatted[];

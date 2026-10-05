@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Color } from 'culori/fn';
-	import { toCss } from '$lib/color';
-	import type { Channel } from '$lib/guides';
+	import { toCss } from '#lib/color/index.js';
+	import type { Channel } from '#lib/guides/index.js';
 
 	type Props = {
 		channels: Channel[];
