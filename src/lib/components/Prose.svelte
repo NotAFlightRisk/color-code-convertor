@@ -2,8 +2,9 @@
 	let { text }: { text: string } = $props();
 </script>
 
-{#each text.split('`') as piece, index (index)}{#if index % 2}<code>{piece}</code
-		>{:else}{piece}{/if}{/each}
+{#each text.split('`') as piece, index (index)}{#if index % 2}<code>
+			{piece}
+		</code>{:else}{piece}{/if}{/each}
 
 <style>
 	code {
